@@ -6,26 +6,17 @@ import {
   Button,
   FormControl,
   FormLabel,
-  HStack,
   Input,
-  Icon,
-  Link,
-  Switch,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 // Assets
 import signInImage from "assets/img/signInImage.png";
-import { FaApple, FaFacebook, FaGoogle } from "react-icons/fa";
 
 function SignIn() {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
   const bgForm = useColorModeValue("white", "navy.800");
-  const titleColor = useColorModeValue("gray.700", "blue.500");
-  const colorIcons = useColorModeValue("gray.700", "white");
-  const bgIcons = useColorModeValue("trasnparent", "navy.700");
-  const bgIconsHover = useColorModeValue("gray.50", "whiteAlpha.100");
   return (
     <Flex position='relative' mb='40px'>
       <Flex
@@ -59,16 +50,23 @@ function SignIn() {
               "unset"
             )}>
             <Text
+              fontSize='sm'
+              color={textColor}
+              textAlign='center'
+              mb='10px'>
+              Welcome to Xpponet
+            </Text>
+            <Text
               fontSize='xl'
               color={textColor}
               fontWeight='bold'
               textAlign='center'
               mb='22px'>
-              Welcome to Xpponet
+              Login
             </Text>
             <FormControl>
               <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
-                Name
+                Username
               </FormLabel>
               <Input
                 variant='auth'
@@ -98,7 +96,7 @@ function SignIn() {
                 w='100%'
                 h='45'
                 mb='24px'>
-                SIGN UP
+                Login
               </Button>
             </FormControl>
           </Flex>
