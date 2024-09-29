@@ -1,5 +1,4 @@
 import React from "react";
-// Chakra imports
 import {
   Box,
   Flex,
@@ -10,30 +9,25 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-// Assets
 import signInImage from "assets/img/signInImage.png";
 
 function SignIn() {
-  // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
   const bgForm = useColorModeValue("white", "navy.800");
   return (
-    <Flex position='relative' mb='40px'>
+    <Flex position='relative'>
       <Flex
-        minH={{ md: "1000px" }}
-        h={{ sm: "initial", md: "75vh", lg: "85vh" }}
+        h={{ sm: "100vh" }}
         w='100%'
         maxW='1044px'
         mx='auto'
         justifyContent='space-between'
-        mb='30px'
         pt={{ md: "0px" }}>
         <Flex
           w='100%'
           h='100%'
           alignItems='center'
           justifyContent='center'
-          mb='60px'
           mt={{ base: "50px", md: "20px" }}>
           <Flex
             zIndex='2'
@@ -107,11 +101,13 @@ function SignIn() {
           w='100%'
           left='0px'
           position='absolute'
-          bgImage={signInImage}>
+          bgImage={`url(${signInImage})`}
+          bgRepeat='no-repeat'
+          bgPosition='center'
+          bgSize='cover'>
           <Box
             w='100%'
             h='100%'
-            bgSize='cover'
             bg='blue.500'
             opacity='0.8'></Box>
         </Box>
