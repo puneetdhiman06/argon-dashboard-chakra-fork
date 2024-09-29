@@ -64,77 +64,7 @@ function SignIn() {
               fontWeight='bold'
               textAlign='center'
               mb='22px'>
-              Register With
-            </Text>
-            <HStack spacing='15px' justify='center' mb='22px'>
-              <Flex
-                justify='center'
-                align='center'
-                w='75px'
-                h='75px'
-                borderRadius='8px'
-                border={useColorModeValue("1px solid", "0px")}
-                borderColor='gray.200'
-                cursor='pointer'
-                transition='all .25s ease'
-                bg={bgIcons}
-                _hover={{ bg: bgIconsHover }}>
-                <Link href='#'>
-                  <Icon as={FaFacebook} color={colorIcons} w='30px' h='30px' />
-                </Link>
-              </Flex>
-              <Flex
-                justify='center'
-                align='center'
-                w='75px'
-                h='75px'
-                borderRadius='8px'
-                border={useColorModeValue("1px solid", "0px")}
-                borderColor='gray.200'
-                cursor='pointer'
-                transition='all .25s ease'
-                bg={bgIcons}
-                _hover={{ bg: bgIconsHover }}>
-                <Link href='#'>
-                  <Icon
-                    as={FaApple}
-                    color={colorIcons}
-                    w='30px'
-                    h='30px'
-                    _hover={{ filter: "brightness(120%)" }}
-                  />
-                </Link>
-              </Flex>
-              <Flex
-                justify='center'
-                align='center'
-                w='75px'
-                h='75px'
-                borderRadius='8px'
-                border={useColorModeValue("1px solid", "0px")}
-                borderColor='gray.200'
-                cursor='pointer'
-                transition='all .25s ease'
-                bg={bgIcons}
-                _hover={{ bg: bgIconsHover }}>
-                <Link href='#'>
-                  <Icon
-                    as={FaGoogle}
-                    color={colorIcons}
-                    w='30px'
-                    h='30px'
-                    _hover={{ filter: "brightness(120%)" }}
-                  />
-                </Link>
-              </Flex>
-            </HStack>
-            <Text
-              fontSize='lg'
-              color='gray.400'
-              fontWeight='bold'
-              textAlign='center'
-              mb='22px'>
-              or
+              Welcome to Xpponet
             </Text>
             <FormControl>
               <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
@@ -161,12 +91,6 @@ function SignIn() {
                 mb='24px'
                 size='lg'
               />
-              <FormControl display='flex' alignItems='center' mb='24px'>
-                <Switch id='remember-login' colorScheme='blue' me='10px' />
-                <FormLabel htmlFor='remember-login' mb='0' fontWeight='normal'>
-                  Remember me
-                </FormLabel>
-              </FormControl>
               <Button
                 fontSize='10px'
                 variant='dark'
@@ -177,24 +101,6 @@ function SignIn() {
                 SIGN UP
               </Button>
             </FormControl>
-            <Flex
-              flexDirection='column'
-              justifyContent='center'
-              alignItems='center'
-              maxW='100%'
-              mt='0px'>
-              <Text color={textColor} fontWeight='medium'>
-                Already have an account?
-                <Link
-                  color={titleColor}
-                  as='span'
-                  ms='5px'
-                  href='#'
-                  fontWeight='bold'>
-                  Sign In
-                </Link>
-              </Text>
-            </Flex>
           </Flex>
         </Flex>
         <Box

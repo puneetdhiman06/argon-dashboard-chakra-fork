@@ -7,7 +7,6 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import Configurator from "components/Configurator/Configurator";
-import Footer from "components/Footer/Footer.js";
 import {
   ArgonLogoDark,
   ArgonLogoLight,
@@ -164,7 +163,6 @@ export default function Dashboard(props) {
             </PanelContainer>
           </PanelContent>
         ) : null}
-        <Footer />
         <Portal>
           <FixedPlugin
             secondary={getActiveNavbar(routes)}
