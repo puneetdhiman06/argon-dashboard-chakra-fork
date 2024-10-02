@@ -431,12 +431,12 @@ export function SidebarResponsive(props) {
 
   //  BRAND
 
-  var brand = (
-    <Box pt={"35px"} mb="8px">
-      {logo}
-      <HSeparator my="26px" />
-    </Box>
-  );
+  // var brand = (
+  //   <Box pt={"35px"} mb="8px">
+  //     {logo}
+  //     <HSeparator my="26px" />
+  //   </Box>
+  // );
 
   // SIDEBAR
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -480,7 +480,7 @@ export function SidebarResponsive(props) {
           />
           <DrawerBody maxW="250px" px="1rem">
             <Box maxW="100%" h="100vh">
-              <Box>{brand}</Box>
+              {/* <Box>{brand}</Box> */}
               <Stack direction="column" mb="40px">
                 <Box>{links}</Box>
               </Stack>

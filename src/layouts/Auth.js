@@ -79,13 +79,8 @@ export default function Pages(props) {
       }
     });
   };
-  const navRef = React.useRef();
   document.documentElement.dir = "ltr";
   return (
-    <Box ref={navRef} w='100%'>
-      <Portal containerRef={navRef}>
-        <AuthNavbar secondary={getActiveNavbar(routes)} logoText='' />
-      </Portal>
       <Box w='100%'>
         <Box ref={wrapper} w='100%'>
           <Switch>
@@ -94,6 +89,5 @@ export default function Pages(props) {
           </Switch>
         </Box>
       </Box>
-    </Box>
   );
 }
