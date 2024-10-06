@@ -5,6 +5,7 @@ import Tables from "views/Dashboard/Tables.js";
 import Billing from "views/Dashboard/Billing.js";
 import Profile from "views/Dashboard/Profile.js";
 import SignIn from "views/Pages/SignIn.js";
+import User from 'views/Dashboard/User';
 // import SignUp from "views/Pages/SignUp.js";
 
 import {
@@ -24,17 +25,17 @@ var dashRoutes = [
     layout: "/admin",
   },
   {
+    path: "/user",
+    name: "User",
+    icon: <CreditIcon color='inherit' />,
+    component: User,
+    layout: "/admin",
+  },
+  {
     path: "/tables",
     name: "Complaint",
     icon: <StatsIcon color='inherit' />,
     component: Tables,
-    layout: "/admin",
-  },
-  {
-    path: "/billing",
-    name: "User",
-    icon: <CreditIcon color='inherit' />,
-    component: Billing,
     layout: "/admin",
   },
   {
@@ -61,7 +62,7 @@ var dashRoutes = [
   },
   {
     path: "/signin",
-    name: "Sign In",
+    name: "Sign Out",
     icon: <DocumentIcon color='inherit' />,
     component: SignIn,
     layout: "/auth",
