@@ -6,6 +6,7 @@ import Billing from "views/Dashboard/Billing.js";
 import Profile from "views/Dashboard/Profile.js";
 import SignIn from "views/Pages/SignIn.js";
 import User from 'views/Dashboard/User';
+import EmployeeRegistrationForm from 'components/Employee/EmployeeRegistrationForm';
 // import SignUp from "views/Pages/SignUp.js";
 
 import {
@@ -39,10 +40,10 @@ var dashRoutes = [
     layout: "/admin",
   },
   {
-    path: "/billing",
+    path: "/employee",
     name: "Employee",
     icon: <CreditIcon color='inherit' />,
-    component: Billing,
+    component: EmployeeRegistrationForm,
     layout: "/admin",
   },
   {

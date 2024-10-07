@@ -2,7 +2,7 @@ import { Box, Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react';
 
 const UserComplaint = () => {
     return (
-    <Box>
+    <Box overflowX="auto">
         <Table variant="simple" colorScheme="blue">
         <Thead bg="blue.200">
             <Tr>

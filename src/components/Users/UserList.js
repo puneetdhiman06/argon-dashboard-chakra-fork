@@ -31,12 +31,18 @@ const UserList = () => {
   return (
     <Box>
       {/* Header with Buttons */}
-      <Box display="flex" justifyContent="space-between" mb={10}>
-        <Button colorScheme="red">Delete Selected</Button>
-        <Button colorScheme="blue">Refresh All</Button>
-        <Button colorScheme="blue">Delete Working ONU</Button>
+      <Box 
+        display="flex" 
+        justifyContent={{ base: "center", md: "space-between" }} 
+        flexDirection={{ base: "column", md: "row" }} 
+        mb={10}
+        gap={4}
+       >
+        <Button colorScheme="red" width={{ base: "100%", md: "auto" }}>Delete Selected</Button>
+        <Button colorScheme="blue" width={{ base: "100%", md: "auto" }}>Refresh All</Button>
+        <Button colorScheme="blue" width={{ base: "100%", md: "auto" }}>Delete Working ONU</Button>
       </Box>
-
+    <Box overflowX="auto">
     <Table variant="simple" size="md">
         <Thead bg="blue.100">
         <Tr>
@@ -86,6 +92,7 @@ const UserList = () => {
         ))}
         </Tbody>
     </Table>
+    </Box>
     </Box>
   );
 };
