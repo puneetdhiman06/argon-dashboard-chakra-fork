@@ -46,9 +46,11 @@ function SignIn() {
       const data = await response.json();
 
       const access_token = data.access_token;
+      const userDetail = data.user_details
 
-      if (access_token) {
+      if (access_token && userDetail) {
         localStorage.setItem("access_token", access_token);
+        localStorage.setItem("user_details", JSON.stringify(userDetail));
         history.push("/admin/dashboard");
       } else {
         throw new Error("Access token not found in response");

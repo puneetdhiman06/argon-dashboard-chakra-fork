@@ -106,7 +106,6 @@ const NewUser = () => {
       // Handle form submission and send data to the API
       const handleSubmit = async (e) => {
         e.preventDefault();
-    
         if (!validateForm()) {
           console.log("Validation failed");
           return;
@@ -143,6 +142,7 @@ const NewUser = () => {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("access_token")}`
               },
               body: JSON.stringify(apiBody),
             }

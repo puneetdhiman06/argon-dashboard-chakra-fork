@@ -7,6 +7,7 @@ import Profile from "views/Dashboard/Profile.js";
 import SignIn from "views/Pages/SignIn.js";
 import User from 'views/Dashboard/User';
 import EmployeeRegistrationForm from 'components/Employee/EmployeeRegistrationForm';
+import Complaint from "views/Dashboard/Complaint"
 // import SignUp from "views/Pages/SignUp.js";
 
 import {
@@ -33,10 +34,10 @@ var dashRoutes = [
     layout: "/admin",
   },
   {
-    path: "/tables",
+    path: "/complaint",
     name: "Complaint",
     icon: <StatsIcon color='inherit' />,
-    component: Tables,
+    component: Complaint,
     layout: "/admin",
   },
   {
