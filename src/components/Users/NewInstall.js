@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Table, Thead, Tbody, Tr, Th, Td, TableContainer, 
   Button, Avatar, Box, Text, IconButton, useDisclosure, 
@@ -6,6 +6,7 @@ import {
   DrawerBody, DrawerFooter
 } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
+import GeneralForm from 'components/Forms/GeneralForm';
 
 const data = [
   {
@@ -30,10 +31,52 @@ const data = [
 const NewInstall = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedRow, setSelectedRow] = useState(null);
+  const [formData, setFormData] = useState({
+    location: "",
+    name: "",
+    phoneNumber: "",
+    aadharCardNumber: "",
+    customerPhoto: "",
+    idFrontImage: "",
+    idBackImage: "",
+    address: "",
+    plan: ""
+  });
+
+  useEffect(() => {
+    if (selectedRow) {
+      setFormData({
+        location: selectedRow?.location,
+        name: selectedRow?.name,
+        phoneNumber: selectedRow?.phone,
+        aadharCardNumber: selectedRow?.aadhar,
+        customerPhoto: selectedRow?.customerImage,
+        idFrontImage: selectedRow?.frontImage,
+        idBackImage: selectedRow?.backImage,
+        address: selectedRow?.address,
+        plan: selectedRow?.plan
+      });
+    }
+    console.log(selectedRow)
+  }, [selectedRow]);
 
   const handleDetailClick = (row) => {
     setSelectedRow(row);
     onOpen(); // Open the drawer
+  };
+
+  const [validateForm, setValidateForm] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const sendValidation = (validateFn, formData, setLoadingFn) => {
+    setValidateForm(() => validateFn);
+    setFormData(formData);
+    setLoading(() => setLoadingFn);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Submit New Install");
   };
 
   return (
@@ -115,14 +158,7 @@ const NewInstall = () => {
           <DrawerBody>
             {selectedRow && (
               <Box>
-                <Text><strong>Serial:</strong> {selectedRow.serial}</Text>
-                <Text><strong>Phone:</strong> {selectedRow.phone}</Text>
-                <Text><strong>Address:</strong> {selectedRow.address}</Text>
-                <Text><strong>Aadhar:</strong> {selectedRow.aadhar}</Text>
-                <Text><strong>Plan:</strong> {selectedRow.plan}</Text>
-                <Text><strong>IP Address:</strong> {selectedRow.ip}</Text>
-                <Text><strong>Engineer:</strong> {selectedRow.engineer}</Text>
-                <Text><strong>Engineer Phone:</strong> {selectedRow.engineerPhone}</Text>
+                <GeneralForm handleSubmit={handleSubmit} sendValidation={sendValidation}/>
               </Box>
             )}
           </DrawerBody>
