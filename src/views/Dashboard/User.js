@@ -12,8 +12,6 @@ import {
 const NewUser = lazy(() => import('components/Users/NewUser'));
 const NewInstall = lazy(() => import('components/Users/NewInstall'));
 const UserList = lazy(() => import('components/Users/UserList'));
-const UserComplaint = lazy(() => import('components/Users/UserComplaint'));
-const NewComplaint = lazy(() => import('components/Complaint/NewComplaint'));
 
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
