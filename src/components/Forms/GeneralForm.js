@@ -8,10 +8,11 @@ import {
   Textarea,
   Stack,
   FormErrorMessage,
+  Box,HStack
 } from '@chakra-ui/react';
 
-const GeneralForm = ({ handleSubmit, sendValidation }) => {
-  const [formData, setFormData] = useState(sendValidation.formData?sendValidation.formData:{
+const GeneralForm = ({ handleSubmit, sendValidation, initialFormData, photoUpload=true, children }) => {
+  const [formData, setFormData] = useState(initialFormData || {
     location: '',
     name: '',
     phoneNumber: '',
@@ -21,8 +22,8 @@ const GeneralForm = ({ handleSubmit, sendValidation }) => {
     idBackImage: null,
     address: '',
     plan: '',
-  });
-  
+  }); // Provide fallback default values
+
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
@@ -40,9 +41,9 @@ const GeneralForm = ({ handleSubmit, sendValidation }) => {
     if (!formData.address.trim()) newErrors.address = 'Address is required';
     if (!formData.plan) newErrors.plan = 'Please select a plan';
     if (!formData.location.trim()) newErrors.location = 'Location is required';
-    if (!formData.customerPhoto) newErrors.customerPhoto = 'Customer photo is required';
-    if (!formData.idFrontImage) newErrors.idFrontImage = 'ID front image is required';
-    if (!formData.idBackImage) newErrors.idBackImage = 'ID back image is required';
+    if (photoUpload && !formData.customerPhoto) newErrors.customerPhoto = 'Customer photo is required';
+    if (photoUpload && !formData.idFrontImage) newErrors.idFrontImage = 'ID front image is required';
+    if (photoUpload && !formData.idBackImage) newErrors.idBackImage = 'ID back image is required';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -51,7 +52,6 @@ const GeneralForm = ({ handleSubmit, sendValidation }) => {
   useEffect(() => {
     sendValidation(validateForm, formData, setLoading); // Send validation function and form data to the parent
   }, [formData]);
-
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -107,6 +107,14 @@ const GeneralForm = ({ handleSubmit, sendValidation }) => {
     }
   };
 
+  const handleSearch = () => {
+    setLoading(true);
+    setTimeout(() => {
+      console.log("Search performed with:", formData);
+      setLoading(false);
+    }, 2000);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <Stack spacing={4}>
@@ -160,7 +168,9 @@ const GeneralForm = ({ handleSubmit, sendValidation }) => {
         />
         <FormErrorMessage>{errors.aadharCardNumber}</FormErrorMessage>
       </FormControl>
-
+{children}
+{photoUpload&&
+<>
     <FormControl isInvalid={errors.customerPhoto}>
       <FormLabel>Customer Photo:</FormLabel>
       <Input
@@ -196,6 +206,7 @@ const GeneralForm = ({ handleSubmit, sendValidation }) => {
       />
       <FormErrorMessage>{errors.idBackImage}</FormErrorMessage>
     </FormControl>
+</>}
 
       <FormControl isInvalid={errors.address}>
         <FormLabel>Address:</FormLabel>
@@ -223,6 +234,156 @@ const GeneralForm = ({ handleSubmit, sendValidation }) => {
         </Select>
         <FormErrorMessage>{errors.plan}</FormErrorMessage>
       </FormControl>
+
+       {!photoUpload && (
+          <>
+            <FormControl>
+              <FormLabel>IP Address:</FormLabel>
+              <Input
+                type="text"
+                name="ipAddress"
+                value={formData.ipAddress}
+                onChange={handleChange}
+                isDisabled={loading}
+              />
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Serial Number:</FormLabel>
+              <Input
+                type="text"
+                name="serialNumber"
+                value={formData.serialNumber}
+                onChange={handleChange}
+                isDisabled={loading}
+              />
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Ont Serial Number:</FormLabel>
+              <Input
+                type="text"
+                name="ontSerialNumber"
+                value={formData.ontSerialNumber}
+                onChange={handleChange}
+                isDisabled={loading}
+              />
+            </FormControl>
+            
+            <Box
+              p={4}
+              border="2px solid"
+              borderColor="gray.300"
+              borderRadius="md"
+              boxShadow="lg"
+            >
+              <HStack spacing={4} justifyContent="center">
+                <FormControl isDisabled={loading}>
+                  <FormLabel fontSize="md" fontWeight="bold" color="gray.700">
+                    Unique Box ID:
+                  </FormLabel>
+                  <Input
+                    type="text"
+                    name="uniqueBoxId"
+                    value={formData.uniqueBoxId}
+                    onChange={handleChange}
+                    borderColor="gray.300"
+                    focusBorderColor="teal.400"
+                    size="md"
+                  />
+                </FormControl>
+                <Button
+                  size="md"
+                  bg="green.400"
+                  color="white"
+                  _hover={{ bg: "green.500" }}
+                  onClick={handleSearch}
+                  isLoading={loading}
+                >
+                  Search
+                </Button>
+              </HStack>
+
+              <Stack mt={4} spacing={4} direction="row" justifyContent="center">
+                <FormControl isDisabled={loading}>
+                  <FormLabel fontSize="sm" fontWeight="medium" color="gray.600">
+                    Box No:
+                  </FormLabel>
+                  <Input
+                    type="text"
+                    name="boxNo"
+                    value={formData.boxNo}
+                    onChange={handleChange}
+                    borderColor="gray.300"
+                    focusBorderColor="teal.400"
+                    size="sm"
+                    placeholder="Box No"
+                  />
+                </FormControl>
+
+                <FormControl isDisabled={loading}>
+                  <FormLabel fontSize="sm" fontWeight="medium" color="gray.600">
+                    Box Port:
+                  </FormLabel>
+                  <Input
+                    type="text"
+                    name="boxPort"
+                    value={formData.boxPort}
+                    onChange={handleChange}
+                    borderColor="gray.300"
+                    focusBorderColor="teal.400"
+                    size="sm"
+                    placeholder="Box Port"
+                  />
+                </FormControl>
+              </Stack>
+            </Box>
+
+            <FormControl>
+              <FormLabel>OLT IP:</FormLabel>
+              <Input
+                type="text"
+                name="oltIp"
+                value={formData.oltIp}
+                onChange={handleChange}
+                isDisabled={loading}
+              />
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>ONU ID:</FormLabel>
+              <Input
+                type="text"
+                name="onuId"
+                value={formData.onuId}
+                onChange={handleChange}
+                isDisabled={loading}
+              />
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Engineer Name:</FormLabel>
+              <Input
+                type="text"
+                name="engineerName"
+                value={formData.engineerName}
+                onChange={handleChange}
+                isDisabled={loading}
+              />
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Engineer Phone:</FormLabel>
+              <Input
+                type="text"
+                name="engineerPhone"
+                value={formData.engineerPhone}
+                onChange={handleChange}
+                isDisabled={loading}
+              />
+            </FormControl>
+          </>
+        )}
 
       <Button colorScheme="teal" type="submit" mt="4" isLoading={loading}>
         Submit

@@ -6,6 +6,19 @@ const NewUser = () => {
   const [formData, setFormData] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // Define the initial form data here
+  const initialFormData = {
+    location: '',
+    name: '',
+    phoneNumber: '',
+    aadharCardNumber: '',
+    customerPhoto: null,
+    idFrontImage: null,
+    idBackImage: null,
+    address: '',
+    plan: '',
+  };
+
   const sendValidation = (validateFn, formData, setLoadingFn) => {
     setValidateForm(() => validateFn);
     setFormData(formData);
@@ -72,7 +85,11 @@ const NewUser = () => {
   };
 
   return (
-    <GeneralForm handleSubmit={handleSubmit} sendValidation={sendValidation} />
+    <GeneralForm 
+      handleSubmit={handleSubmit} 
+      sendValidation={sendValidation} 
+      initialFormData={initialFormData}  // Pass initial form data here
+    />
   );
 };
 
