@@ -133,8 +133,7 @@
         // You can update the formData or any state based on the API response if needed
         setFormData((prevData) => ({
           ...prevData,
-          boxNo: data.boxNo,
-          boxPort: data.boxPort,
+          onuId: data.onu_id
         }));
       } catch (error) {
         console.error('Error during search:', error);
